@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<manifest>
+    <application name="PointCloudPlayer">
+        <crown name="PointCloudPlayer">
+            <desc>user script</desc>
+            <serves/>
+        </crown>
+        <meta key="author">AppSpace Sample</meta>
+        <meta key="version">2.5.0</meta>
+        <meta key="licensed">false</meta>
+        <meta key="priority">low</meta>
+        <meta key="tags">Scan,PointCloud</meta>
+        <meta key="read-protected">false</meta>
+        <meta key="copy-protected">false</meta>
+        <entry path="pages" default="Viewer.msdd">
+            <file type="application/zip">Viewer.msdd</file>
+        </entry>
+        <entry path="resources">
+            <file type="application">black3_t1.ssr</file>
+            <file type="application">black3_t2.ssr</file>
+            <file type="application">black3_t3.ssr</file>
+        </entry>
+        <entry path="scripts" default="PointCloudPlayer.lua">
+            <file type="text/x-lua">PointCloudPlayer.lua</file>
+        </entry>
+    </application>
+</manifest>

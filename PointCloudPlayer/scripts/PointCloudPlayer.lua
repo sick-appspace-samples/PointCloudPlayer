@@ -24,10 +24,9 @@ local PLAY_PATH = 'resources/'
 -- Create an PointCloudProvider
 local handle = PointCloud.Provider.Directory.create()
 -- Define the path from which the driver gets images
-PointCloud.Provider.Directory.setPath(handle, PLAY_PATH)
+handle:setPath(PLAY_PATH)
 -- Set the a cycle time of 500ms
-PointCloud.Provider.Directory.setCycleTime(handle, 3000)
--- Register the callback function
+handle:setCycleTime(3000)
 
 -- create a viewer instance
 local viewer = View.create()
@@ -46,16 +45,17 @@ local function handleOnStarted()
     print('PointCloudPlayer could not be started.')
   end
 end
-Script.register("Engine.OnStarted", handleOnStarted)
+Script.register('Engine.OnStarted', handleOnStarted)
 
 -- Definition of the callback function which is registered at the provider
 -- PointCloud contains the image itself
 -- Supplements contains supplementary information about the image
+--@handleNewPointCloud(pointcloud:PointCloud, sensorData:SensorData)
 local function handleNewPointCloud(pointcloud, sensorData)
   -- get the timestamp from the metadata
-  local timeStamp = SensorData.getTimestamp(sensorData)
+  local timeStamp = sensorData:getTimestamp()
   -- get the filename from the metadata
-  local origin = SensorData.getOrigin(sensorData)
+  local origin = sensorData:getOrigin()
 
   -- get the dimensions of the point cloud
   local points, width, height = PointCloud.getSize(pointcloud)
@@ -65,8 +65,10 @@ local function handleNewPointCloud(pointcloud, sensorData)
   )
 
   -- present the current point cloud in the viewer
-  View.view(viewer, pointcloud)
+  viewer:addPointCloud(pointcloud)
+  viewer:present()
 end
-PointCloud.Provider.Directory.register(handle, 'OnNewPointCloud', handleNewPointCloud)
+-- Register the callback function
+handle:register('OnNewPointCloud', handleNewPointCloud)
 
 --End of Function and Event Scope------------------------------------------------

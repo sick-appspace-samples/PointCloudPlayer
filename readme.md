@@ -1,5 +1,6 @@
 ## PointCloudPlayer
 Read scanner record files from resources, view the point cloud and printing meta information to the console.  
+
 ### Description
 This sample creates a PointCloudProvider which reads ".ssr"-files from the
 file system. This Provider takes PointClouds with a period of 500ms, which are

@@ -11,7 +11,7 @@ handle:setPath(PLAY_PATH)
 handle:setCycleTime(3000)
 
 -- create a viewer instance
-local viewer = View.create('viewer3D1')
+local viewer = View.create()
 
 --End of Global Scope-----------------------------------------------------------
 

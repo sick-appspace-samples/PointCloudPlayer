@@ -11,7 +11,7 @@ handle:setPath(PLAY_PATH)
 handle:setCycleTime(3000)
 
 -- create a viewer instance
-local viewer = View.create('viewer3D1')
+local viewer = View.create()
 
 --End of Global Scope-----------------------------------------------------------
 
@@ -28,10 +28,10 @@ local function handleOnStarted()
 end
 Script.register('Engine.OnStarted', handleOnStarted)
 
--- Definition of the callback function which is registered at the provider
--- PointCloud contains the image itself
--- Supplements contains supplementary information about the image
---@handleNewPointCloud(pointcloud:PointCloud, sensorData:SensorData)
+---Definition of the callback function which is registered at the provider
+---@param pointcloud PointCloud contains the image itself
+---@param sensorData SensorData contains supplementary information about the image
+
 local function handleNewPointCloud(pointcloud, sensorData)
   -- get the timestamp from the metadata
   local timeStamp = sensorData:getTimestamp()
